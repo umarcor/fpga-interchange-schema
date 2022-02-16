@@ -64,7 +64,7 @@ jobs:
 
       - name: 📓 Build the documentation
         run: |
-          . env/bin/activate
+          . ./env/bin/activate
           make -C docs html
 
       - name: '📤 Upload artifact: Sphinx HTML'
