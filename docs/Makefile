@@ -62,9 +62,9 @@ env:
 	rm -rf env
 	make Miniconda3-latest-$(OSFLAG)-x86_64
 	env/Miniconda3-latest-$(OSFLAG)-x86_64.sh -p env -b -f
-	source env/bin/activate && conda config --system --add envs_dirs env/envs
-	source env/bin/activate && conda config --system --add pkgs_dirs env/pkgs
-	source env/bin/activate && conda env update --name base --file ./environment.yml
+	source ./env/bin/activate && conda config --system --add envs_dirs env/envs
+	source ./env/bin/activate && conda config --system --add pkgs_dirs env/pkgs
+	source ./env/bin/activate && conda env update --name base --file ./environment.yml
 
 .PHONY: env
 
