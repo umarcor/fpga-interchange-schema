@@ -54,17 +54,17 @@ livehtml:
 
 
 env/Miniconda3-latest-$(OSFLAG)-x86_64.sh:
-	mkdir env
-	wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$(OSFLAG)-x86_64.sh -O env/Miniconda3-latest-$(OSFLAG)-x86_64.sh
-	chmod a+x env/Miniconda3-latest-$(OSFLAG)-x86_64.sh
+	mkdir $(PWD)/env
+	wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$(OSFLAG)-x86_64.sh -O $(PWD)/env/Miniconda3-latest-$(OSFLAG)-x86_64.sh
+	chmod a+x $(PWD)/env/Miniconda3-latest-$(OSFLAG)-x86_64.sh
 
 env:
-	rm -rf env
-	make env/Miniconda3-latest-$(OSFLAG)-x86_64.sh
-	./env/Miniconda3-latest-$(OSFLAG)-x86_64.sh -p $(PWD)/env -b -f
-	source env/bin/activate && conda config --system --add envs_dirs $(PWD)/env/envs
-	source env/bin/activate && conda config --system --add pkgs_dirs $(PWD)/env/pkgs
-	source env/bin/activate && conda env update --name base --file ./environment.yml
+	rm -rf $(PWD)/env
+	make $(PWD)/env/Miniconda3-latest-$(OSFLAG)-x86_64.sh
+	$(PWD)/env/Miniconda3-latest-$(OSFLAG)-x86_64.sh -p $(PWD)/env -b -f
+	source $(PWD)/env/bin/activate && conda config --system --add envs_dirs $(PWD)/env/envs
+	source $(PWD)/env/bin/activate && conda config --system --add pkgs_dirs $(PWD)/env/pkgs
+	source $(PWD)/env/bin/activate && conda env update --name base --file ./environment.yml
 
 .PHONY: env
 
